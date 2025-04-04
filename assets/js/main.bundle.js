@@ -1095,17 +1095,15 @@
             if (this.flags.isPellet || (t.globalAlpha *= g.settings.cellTransparency),
             s && e > 0 && !this.flags.isPellet && !this.flags.isEject && !this.flags.isVirus) {
                 const e = s.multiboxID === i.multiboxID;
-                const ringWidth = g.settings.ringWidth;
                 t.fillStyle = this.color,
                 t.strokeStyle = e ? g.settings.MBColor1 : g.settings.MBColor2;
-                t.lineWidth = Math.min(g.settings.ringWidth, this.size * 30);
-                const fillSize = Math.max(this.size - t.lineWidth / 2, this.size * 0.1);                
+                t.lineWidth = g.settings.ringWidth / 100;
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
                 t.fill()
-                t.beginPath();
-                t.arc(this.x, this.y, fillSize, 0, 2 * Math.PI, false); // Full size for the stroke
-                t.stroke();
+                t.beginPath(),
+                t.arc(this.x, this.y, this.size * t.lineWidth, 0, 2 * Math.PI, !1)
+                t.stroke()
             } else
                 t.fillStyle = this.color,
                 t.beginPath(),
