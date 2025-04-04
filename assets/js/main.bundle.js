@@ -510,25 +510,38 @@
         drawMapBorder() {
             const t = a.getActiveClient();
             let e = {
-                left: -8e3,
-                top: -8e3,
-                right: 8e3,
-                bottom: 8e3
+                left: -8000,
+                top: -8000,
+                right: 8000,
+                bottom: 8000
             };
-            t && (e = t.border);
+            if (t) e = t.border;
+        
             const i = 50;
-            this.ctx.lineWidth = i,
-            this.ctx.lineCap = "round",
-            this.ctx.lineJoin = "round",
-            this.ctx.strokeStyle = "#DDDDDD",
-            this.ctx.beginPath(),
-            this.ctx.moveTo(e.left - i, e.bottom + i),
-            this.ctx.lineTo(e.right + i, e.bottom + i),
-            this.ctx.lineTo(e.right + i, e.top - i),
-            this.ctx.lineTo(e.left - i, e.top - i),
-            this.ctx.closePath(),
-            this.ctx.stroke()
+            this.ctx.lineWidth = i;
+            this.ctx.lineCap = "round";
+            this.ctx.lineJoin = "round";
+            this.ctx.strokeStyle = "#DDDDDD";
+            
+            this.ctx.beginPath();
+            this.ctx.moveTo(e.left - i, e.bottom + i);
+            this.ctx.lineTo(e.right + i, e.bottom + i);
+            this.ctx.lineTo(e.right + i, e.top - i);
+            this.ctx.lineTo(e.left - i, e.top - i);
+            this.ctx.closePath();
+            this.ctx.stroke();
         }
+        
+        drawMapImage() {
+            let canvas = document.getElementById('c'),ctx = canvas.getContext('2d');
+            const image = new Image();
+            image.onload = () => {
+              ctx.imageSmoothingEnabled = false;
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              ctx.drawImage(image, 50, 50,8000,500);
+            };
+            image.src = 'https://i.imgur.com/un4GhNJ.jpg';
+        }        
         drawMinimap() {
             const t = a.getActiveClient()
               , e = (t, e, i) => t + (e - t) * i
