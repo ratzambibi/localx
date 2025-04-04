@@ -1097,7 +1097,7 @@
                 const e = s.multiboxID === i.multiboxID;
                 t.fillStyle = this.color,
                 t.strokeStyle = e ? g.settings.MBColor1 : g.settings.MBColor2;
-                t.lineWidth = 25
+                t.lineWidth = ringWidth * 5
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
                 t.fill()
@@ -2384,11 +2384,13 @@
                 showDebug: !1,
                 multiboxAutoSwitchOnDeath: !0,
                 MBColor1: "#FFFFFF",
-                MBColor2: "#00B9E8"
+                MBColor2: "#00B9E8",
+                ringWidth: "25"
 
             },
             this.bindSlider("animationDelay", "animationDelay", "animationDelayValue"),
             this.bindSlider("cellTransparency", "cellTransparency", "cellTransparencyValue"),
+            this.bindSlider("ringWidth", "ringWidthSlider", "ringWidthDisplay");
             this.bindToggleSwitch("showNicknames", "showNicknames"),
             this.bindToggleSwitch("showMass", "showMass"),
             this.bindToggleSwitch("showSkins", "showSkins"),
@@ -2401,23 +2403,23 @@
             this.bindColorInput("MBColor1", "MBColor2")
             this.bindColorInput("MBColor2", "MBColor1");
         }
-        bindSlider(t, e, i) {
-            const s = document.getElementById(e)
-              , n = document.getElementById(i);
-            if (!s)
-                return void console.warn(`Slider with id "${e}" not found.`);
-            if (!n)
-                return void console.warn(`Display element with id "${i}" not found.`);
-            const a = this.settings[t];
-            s.value = a,
-            n.textContent = a,
-            s.addEventListener("input", (e => {
-                const i = parseFloat(e.target.value);
-                n.textContent = i,
-                this.settings[t] = i,
-                localStorage.setItem("ogarx:settings", JSON.stringify(this.settings))
-            }
-            ))
+        bindSlider(settingKey, sliderId, displayId) {
+            const slider = document.getElementById(sliderId),
+                  display = document.getElementById(displayId);
+        
+            if (!slider) return void console.warn(`Slider with id "${sliderId}" not found.`);
+            if (!display) return void console.warn(`Display element with id "${displayId}" not found.`);
+        
+            const value = this.settings[settingKey] ?? 0; // Default to 0 if setting is undefined
+            slider.value = value;
+            display.textContent = value;
+        
+            slider.addEventListener("input", (e) => {
+                const newValue = parseFloat(e.target.value);
+                display.textContent = newValue;
+                this.settings[settingKey] = newValue;
+                localStorage.setItem("ogarx:settings", JSON.stringify(this.settings));
+            });
         }
         bindColorInput(settingKey, inputId) {
             const input = document.getElementById(inputId);
