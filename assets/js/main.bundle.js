@@ -1096,7 +1096,7 @@
             s && e > 0 && !this.flags.isPellet && !this.flags.isEject && !this.flags.isVirus) {
                 const e = s.multiboxID === i.multiboxID;
                 t.fillStyle = this.color,
-                t.strokeStyle = e ? g.settings.MBColor1 : g.settings.MBColor2;
+                t.strokeStyle = e ? "#FFFFFF" : "#00B9E8",
                 t.lineWidth = 25
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
@@ -2382,10 +2382,7 @@
                 showPellets: !0,
                 cursorTracking: !1,
                 showDebug: !1,
-                multiboxAutoSwitchOnDeath: !0,
-                MBColor1: "#FFFFFF",
-                MBColor2: "#00B9E8"
-
+                multiboxAutoSwitchOnDeath: !0
             },
             this.bindSlider("animationDelay", "animationDelay", "animationDelayValue"),
             this.bindSlider("cellTransparency", "cellTransparency", "cellTransparencyValue"),
@@ -2398,8 +2395,6 @@
             this.bindToggleSwitch("cursorTracking", "cursorTracking"),
             this.bindToggleSwitch("showDebug", "showDebug"),
             this.bindToggleSwitch("multiboxAutoSwitchOnDeath", "multiboxAutoSwitchOnDeath")
-            this.bindColorInput("MBColor1", "MBColor2")
-            this.bindColorInput("MBColor2", "MBColor1");
         }
         bindSlider(t, e, i) {
             const s = document.getElementById(e)
@@ -2418,24 +2413,6 @@
                 localStorage.setItem("ogarx:settings", JSON.stringify(this.settings))
             }
             ))
-        }
-        bindColorInput(settingKey, inputId) {
-            const input = document.getElementById(inputId);
-            if (!input) {
-                console.warn(`Color input with id "${inputId}" not found.`);
-                return;
-            }
-
-            // Load saved color if available
-            if (this.settings[settingKey]) {
-                input.value = this.settings[settingKey];
-            }
-
-            // Save color changes when input updates
-            input.addEventListener("input", (event) => {
-                this.settings[settingKey] = event.target.value;
-                localStorage.setItem("ogarx:settings", JSON.stringify(this.settings));
-            });
         }
         bindToggleSwitch(t, e) {
             const i = document.getElementById(e);
