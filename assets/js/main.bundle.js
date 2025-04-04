@@ -2399,6 +2399,7 @@
             this.bindToggleSwitch("showDebug", "showDebug"),
             this.bindToggleSwitch("multiboxAutoSwitchOnDeath", "multiboxAutoSwitchOnDeath")
             this.bindColorInput("MBColor1", "MBColor2")
+            this.bindColorInput("MBColor2", "MBColor1");
         }
         bindSlider(t, e, i) {
             const s = document.getElementById(e)
@@ -2418,7 +2419,6 @@
             }
             ))
         }
-
         bindColorInput(settingKey, inputId) {
             const input = document.getElementById(inputId);
             if (!input) {
@@ -2437,7 +2437,6 @@
                 localStorage.setItem("ogarx:settings", JSON.stringify(this.settings));
             });
         }
-
         bindToggleSwitch(t, e) {
             const i = document.getElementById(e);
             i ? (i.checked = this.settings[t],
