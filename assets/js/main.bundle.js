@@ -1098,9 +1098,6 @@
                 t.fillStyle = this.color,
                 t.strokeStyle = e ? g.settings.MBColor1 : g.settings.MBColor2;
                 t.lineWidth = g.settings.ringWidth * 30;
-                if (this.size <= 0) {
-                    this.size = 1; // Prevent negative size
-                }
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size - 15 * ringWidth, 0, 2 * Math.PI, !1),
                 t.fill()
