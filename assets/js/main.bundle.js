@@ -1098,7 +1098,7 @@
                 const ringWidth = g.settings.ringWidth;
                 t.fillStyle = this.color,
                 t.strokeStyle = e ? g.settings.MBColor1 : g.settings.MBColor2;
-                t.lineWidth = Math.min(g.settings.ringWidth, this.size * 2);
+                t.lineWidth = Math.min(g.settings.ringWidth, this.size * 30);
                 const fillSize = Math.max(this.size - t.lineWidth / 2, this.size * 0.1);                
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
