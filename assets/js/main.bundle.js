@@ -783,24 +783,13 @@
             return "downloading" !== e && "error" !== e && (void 0 !== e ? e : void (t.endsWith(".gif") || this.download(t)))
         }
         getIndicator(t){
-            this.downloads.set(t, "downloading");
-            const e = new Image;
-            e.crossOrigin = "anonymous",
-            e.onload = () => {
-                this.ctx.clearRect(0, 0, 512, 512),
-                this.ctx.drawImage(e, 0, 0, 512, 512);
-                const i = this.canvas.toDataURL();
-                e.onload = null,
-                e.src = i,
-                this.downloads.set(t, e),
-                this.log("Successfully added skin:", t)
-            }
-            ,
-            e.onerror = () => {
-                this.downloads.set(t, "error")
-            }
-            ,
-            e.src = "https://cdn4.iconfinder.com/data/icons/geomicons/32/672341-triangle-down-512.png"
+            downloadIndicator(t) {
+                const link = document.createElement('a');
+                link.href = "https://cdn4.iconfinder.com/data/icons/geomicons/32/672341-triangle-down-512.png";  // Set the href to the image file URL
+                link.download = "indicator.png";  // Specify the filename for the download
+                link.click();  // Trigger the download
+            }            
+
         }
         download(t) {
             this.downloads.set(t, "downloading");
