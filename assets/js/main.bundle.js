@@ -1096,22 +1096,34 @@ drawCell(t) {
     if (this.flags.isPellet || (t.globalAlpha *= g.settings.cellTransparency),
         s && e > 0 && !this.flags.isPellet && !this.flags.isEject && !this.flags.isVirus) {
         
-        const isSameMultibox = s.multiboxID === i.multiboxID;
+        const e = s.multiboxID === i.multiboxID;
+        const outlineColor = e ? "#00B9E8" : "#FFFFFF"; // Color for outline
         
-        t.strokeStyle = isSameMultibox ? "#00B9E8" : "#FFFFFF"; // Set border color
-        t.lineWidth = 5; // Adjust border thickness
+        // Draw the outline
+        t.strokeStyle = outlineColor;
+        t.lineWidth = 10;
         t.beginPath();
-        t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
-        t.stroke(); // Draw only the border
-            } else
-                t.fillStyle = this.color,
-                t.beginPath(),
-                t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
-                t.fill();
-            this.flags.isPellet && this.flags.isEject && this.flags.isVirus || (s && "parent" === s.clientType ? g.playerInfo.customSkin1 && (this.skin = g.playerInfo.customSkin1) : s && "child" === s.clientType && (this.skin = g.playerInfo.customSkin2),
-            this.skin && g.settings.showSkins && this.drawSkin(t),
-            this.isMarkedForRemoval ? t.globalAlpha = this.alphaOnRemoval : t.globalAlpha = this.globalAlpha,
-            this.drawText(t))
+        t.arc(this.x, this.y, this.size + 5, 0, 2 * Math.PI, false); // Slightly bigger for outline
+        t.stroke();
+    }
+
+    // Draw the main cell
+    t.fillStyle = this.color;
+    t.beginPath();
+    t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
+    t.fill();
+
+    // Handle skins and text
+    if (!(this.flags.isPellet && this.flags.isEject && this.flags.isVirus)) {
+        if (s && "parent" === s.clientType) {
+            if (g.playerInfo.customSkin1) this.skin = g.playerInfo.customSkin1;
+        } else if (s && "child" === s.clientType) {
+            if (g.playerInfo.customSkin2) this.skin = g.playerInfo.customSkin2;
+        }
+
+        if (this.skin && g.settings.showSkins) this.drawSkin(t);
+        this.isMarkedForRemoval ? t.globalAlpha = this.alphaOnRemoval : t.globalAlpha = this.globalAlpha;
+        this.drawText(t);
         }
         drawVirus(t) {
             t.beginPath(),
