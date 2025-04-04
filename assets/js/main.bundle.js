@@ -2390,6 +2390,7 @@
             },
             this.bindSlider("animationDelay", "animationDelay", "animationDelayValue"),
             this.bindSlider("cellTransparency", "cellTransparency", "cellTransparencyValue"),
+            this.bindSlider("ringWidth", "ringWidth", "ringWidthValue"),
             this.bindToggleSwitch("showNicknames", "showNicknames"),
             this.bindToggleSwitch("showMass", "showMass"),
             this.bindToggleSwitch("showSkins", "showSkins"),
