@@ -31,14 +31,18 @@
       <div class="menu-container">
         <img class="logo" src="./assets/images/ogarx.png">
         <div class="player-skins">
-          <div class="gallery-button button">
+          <!--<div class="gallery-button button">
             Skins
             <div class="plus"></div>
-          </div>
+          </div>-->
         </div>
         <div class="player-inputs">
           <input id="tag" class="form-control input-tag" placeholder="Tag" maxlength="5">
           <input id="nickname" class="form-control input-nickname" placeholder="Nickname" maxlength="15">
+        </div>
+        <div class="player-inputs">
+          <input id="skin1" class="form-control input-nickname" placeholder="Skin 1 url">
+          <input id="skin2" class="form-control input-nickname" placeholder="Skin 2 url">
         </div>
         <div class="server-select">
           <select class="server-select-input" id="servers">
@@ -52,10 +56,7 @@
           <div id="play" class="play-button button"><i class="fas fa-play"></i> Play!</div>
           <div id="spectate" class="spectate-button button"><i class="fa-solid fa-eye"></i></div>
         </div>
-        <a href="https://www.buymeacoffee.com/ogarx" target="_blank" rel="noopener noreferrer">
-          <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=ogarx&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" />
-        </a>
-      </div>
+        <a href="https://www.buymeacoffee.com/coderrenii"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=coderrenii&button_colour=5F7FFF&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00" /></a>      </div>
     </div>
   </div>
 
@@ -74,7 +75,7 @@
               <div class="tab-content active" id="game-settings">
                 <div class="option">
                   <span>Animation delay: <span class="slider-value" id="animationDelayValue">144</span></span>
-                  <input type="range" class="setting-slider" id="animationDelay" min="40" max="200" value="140">
+                  <input type="range" class="setting-slider" id="animationDelay" min="10" max="200" value="140">
                 </div>
                 <div class="option">
                   <span>Cell transparency: <span class="slider-value" id="cellTransparencyValue">1</span></span>
@@ -123,6 +124,20 @@
                   </label>
                 </div>
                 <div class="option">
+                  <span>Cursor tracking:</span>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="cursorTracking">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="option">
+                  <span>Multibox auto switch on death:</span>
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="multiboxAutoSwitchOnDeath">
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="option">
                   <span>Debug mode:</span>
                   <label class="toggle-switch">
                     <input type="checkbox" id="showDebug">
@@ -151,6 +166,18 @@
                   <span>Switch player:</span>
                   <input id="switchPlayerkey" class="hotkey-input" value="Tab" maxlength="1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                 </div>
+                <div class="option">
+                  <span>Bot split:</span>
+                  <input id="botSplit" class="hotkey-input" value="KeyQ" maxlength="1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                </div>
+                <div class="option">
+                  <span>Bot feed:</span>
+                  <input id="botFeed" class="hotkey-input" value="KeyW" maxlength="1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                </div>
+                <div class="option">
+                  <span>Cell pause:</span>
+                  <input id="cellPause" class="hotkey-input" value="KeyR" maxlength="1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                </div>
               </div>
               <div class="tab-content" id="mouse">
                 <div class="option">
@@ -162,6 +189,7 @@
                     <option value="doubleSplit">Doublesplit</option>
                     <option selected value="tricksplit">Tricksplit</option>
                     <option value="switchPlayer">Switch player</option>
+                    <option value="magicSplit">Magic split</option>
                   </select>
                 </div>
                 <div class="option">
@@ -173,6 +201,7 @@
                     <option value="doubleSplit">Doublesplit</option>
                     <option value="tricksplit">Tricksplit</option>
                     <option value="switchPlayer">Switch player</option>
+                    <option value="magicSplit">Magic split</option>
                   </select>
                 </div> 
                 <div class="option">
@@ -184,6 +213,7 @@
                     <option value="doubleSplit">Doublesplit</option>
                     <option value="tricksplit">Tricksplit</option>
                     <option value="switchPlayer">Switch player</option>
+                    <option value="magicSplit">Magic split</option>
                   </select>
                 </div> 
               </div>
@@ -208,7 +238,7 @@
         'debug': false,
         'newestOnTop': false,
         'progressBar': true,
-        'positionClass': 'toast-top-center',
+        'positionClass': 'toast-bottom-left',
         'preventDuplicates': false,
         'showDuration': '1000',
         'hideDuration': '1000',
@@ -220,6 +250,9 @@
         'hideMethod': 'fadeOut',
     }
   </script>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<div id="cf-turnstile" data-sitekey="0x4AAAAAAACWFDYFT_opGqX8"></div>
 
   <script src="https://unpkg.com/gifler@latest/gifler.min.js"></script>
   <script src="./assets/js/main.bundle.js"></script>
