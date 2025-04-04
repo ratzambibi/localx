@@ -2317,21 +2317,38 @@
         }
         initMouseControls() {
             const t = document.getElementById("leftClick")
-              , e = document.getElementById("middleClick")
-              , i = document.getElementById("rightClick");
-            t.addEventListener("change", ( () => {
-                this.setMouseAction("leftClick", t.value)
-            }
-            )),
-            e.addEventListener("change", ( () => {
-                this.setMouseAction("middleClick", e.value)
-            }
-            )),
-            i.addEventListener("change", ( () => {
-                this.setMouseAction("rightClick", i.value)
-            }
-            )),
-            this.setupMouseListeners()
+                , e = document.getElementById("middleClick")
+                , i = document.getElementById("rightClick");
+        
+            // Initialize dropdowns with saved values from localStorage
+            const leftClickAction = localStorage.getItem("leftClickAction") || "tricksplit";
+            const middleClickAction = localStorage.getItem("middleClickAction") || "noAction";
+            const rightClickAction = localStorage.getItem("rightClickAction") || "noAction";
+        
+            // Set the dropdown values to the saved values
+            t.value = leftClickAction;
+            e.value = middleClickAction;
+            i.value = rightClickAction;
+        
+            // Add event listeners to update localStorage on value change
+            t.addEventListener("change", () => {
+                console.log("Left click changed to:", t.value);
+                this.setMouseAction("leftClick", t.value);
+            });
+        
+            e.addEventListener("change", () => {
+                console.log("Middle click changed to:", e.value);
+                this.setMouseAction("middleClick", e.value);
+            });
+        
+            i.addEventListener("change", () => {
+                console.log("Right click changed to:", i.value);
+                this.setMouseAction("rightClick", i.value);
+            });
+        
+            // Setup mouse listeners for other actions
+            this.setupMouseListeners();
+        }        
         }
         setMouseAction(t, e) {
             localStorage.setItem(`${t}Action`, e)
