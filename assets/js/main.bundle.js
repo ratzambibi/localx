@@ -1097,7 +1097,7 @@
                 const e = s.multiboxID === i.multiboxID;
                 t.fillStyle = this.color,
                 t.strokeStyle = e ? g.settings.MBColor1 : g.settings.MBColor2;
-                t.lineWidth = 25
+                t.lineWidth = g.settings.ringWidth * 5,
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
                 t.fill()
@@ -2384,11 +2384,13 @@
                 showDebug: !1,
                 multiboxAutoSwitchOnDeath: !0,
                 MBColor1: "#FFFFFF",
-                MBColor2: "#00B9E8"
+                MBColor2: "#00B9E8",
+                ringWidth: "25"
 
             },
             this.bindSlider("animationDelay", "animationDelay", "animationDelayValue"),
             this.bindSlider("cellTransparency", "cellTransparency", "cellTransparencyValue"),
+            this.bindSlider("ringWidth")
             this.bindToggleSwitch("showNicknames", "showNicknames"),
             this.bindToggleSwitch("showMass", "showMass"),
             this.bindToggleSwitch("showSkins", "showSkins"),

@@ -148,6 +148,12 @@
             		  <input type="color" id="MBColor2" value="#00B9E8">
             		</div>
               </div>
+              
+              <div class="option">
+                <label for="ringWidth">Ring Width:</label>
+                <input type="range" id="ringWidth" min="1" max="20" value="5" oninput="updateRingWidthValue(this.value)">
+                <span id="ringWidthValue">5</span>
+              </div>
 
                 <div class="option">
                   <span>Debug mode:</span>
