@@ -1101,6 +1101,7 @@
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
                 t.fill()
+                t.stroke()
             } else
                 t.fillStyle = this.color,
                 t.beginPath(),
