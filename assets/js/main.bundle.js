@@ -782,15 +782,6 @@
             const e = this.downloads.get(t);
             return "downloading" !== e && "error" !== e && (void 0 !== e ? e : void (t.endsWith(".gif") || this.download(t)))
         }
-        getIndicator(t){
-            downloadIndicator(t) {
-                const link = document.createElement('a');
-                link.href = "https://cdn4.iconfinder.com/data/icons/geomicons/32/672341-triangle-down-512.png";  // Set the href to the image file URL
-                link.download = "indicator.png";  // Specify the filename for the download
-                link.click();  // Trigger the download
-            }            
-
-        }
         download(t) {
             this.downloads.set(t, "downloading");
             const e = new Image;
@@ -1167,25 +1158,7 @@
                 t.drawImage(i, this.x - e / 2, this.y - e / 2, e, e),
                 t.restore()
             }
-            
         }
-        drawIndicator(t) {
-            this.indicator = "https://cdn4.iconfinder.com/data/icons/geomicons/32/672341-triangle-down-512.png"; // Indicator URL
-            if (!this.indicatorImage) {
-                this.indicatorImage = new Image();
-                this.indicatorImage.src = this.indicator;
-                this.indicatorImage.crossOrigin = "anonymous"; // Allow cross-origin loading if needed
-            }
-    
-            // Ensure the image is fully loaded before drawing
-            if (this.indicatorImage.complete) {
-                const imgSize = this.size * 1.5; // Scale image relative to cell size
-                const offsetY = this.size + imgSize / 2; // Position image above the cell
-    
-                // Draw the image above the cell
-                t.drawImage(this.indicatorImage, this.x - imgSize / 2, this.y - offsetY, imgSize, imgSize);
-            }
-        }    
         drawText(t) {
             let e = .9;
             if (g.settings.showNicknames) {
@@ -1941,8 +1914,7 @@
                 customSkin1: null,
                 customSkin2: null,
                 nickname: null,
-                tag: null,
-                indicator: null
+                tag: null
             },
             this.stopMoving = !1,
             this.bots = [],
