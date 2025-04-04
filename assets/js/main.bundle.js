@@ -1089,53 +1089,33 @@
             this.drawCompleted = !0
         }
         drawCell(t) {
-            const e = a.totalPlaying(),
-                  i = a.getActiveClient(),
-                  s = a.findClientOrigin(this.playerID, null);
-        
+            const e = a.totalPlaying()
+              , i = a.getActiveClient()
+              , s = a.findClientOrigin(this.playerID, null);
             if (this.flags.isPellet || (t.globalAlpha *= g.settings.cellTransparency),
-                s && e > 0 && !this.flags.isPellet && !this.flags.isEject && !this.flags.isVirus) {
-                
+            s && e > 0 && !this.flags.isPellet && !this.flags.isEject && !this.flags.isVirus) {
                 const e = s.multiboxID === i.multiboxID;
-                t.fillStyle = this.color;
+                t.fillStyle = this.color,
                 t.strokeStyle = e ? g.settings.MBColor1 : g.settings.MBColor2;
-        
-                // Calculate the ring width as a percentage of the size
-                const ringPercentage = g.settings.ringWidth / 100;
-                const ringWidth = this.size * ringPercentage; // Ring width based on the cell size
-                
-                // Draw the fill (inner part of the cell)
-                t.beginPath();
-                t.arc(this.x, this.y, this.size - ringWidth / 2, 0, 2 * Math.PI, false); // Inner circle for fill
+                t.lineWidth = g.settings.ringWidth / 100;
+
+                t.beginPath(),
+                t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
+                t.fill()
+
+                t.beginPath(),
+                t.arc(this.x, this.y, this.size * t.lineWidth, 0, 2 * Math.PI, !1)
+                t.stroke()
+            } else
+                t.fillStyle = this.color,
+                t.beginPath(),
+                t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
                 t.fill();
-                
-                // Draw the outer ring (stroke)
-                t.beginPath();
-                t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false); // Outer circle for stroke
-                t.lineWidth = ringWidth; // Set the ring width as a percentage of the cell size
-                t.stroke();
-            } else {
-                // If not drawing the ring, just draw the cell's normal fill
-                t.fillStyle = this.color;
-                t.beginPath();
-                t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
-                t.fill();
-            }
-        
-            // Skin and text drawing logic
-            if (!(this.flags.isPellet && this.flags.isEject && this.flags.isVirus)) {
-                if (s && s.clientType === "parent" && g.playerInfo.customSkin1) {
-                    this.skin = g.playerInfo.customSkin1;
-                } else if (s && s.clientType === "child" && g.playerInfo.customSkin2) {
-                    this.skin = g.playerInfo.customSkin2;
-                }
-                if (this.skin && g.settings.showSkins) {
-                    this.drawSkin(t);
-                }
-                this.isMarkedForRemoval ? t.globalAlpha = this.alphaOnRemoval : t.globalAlpha = this.globalAlpha;
-                this.drawText(t);
-            }
-        }        
+            this.flags.isPellet && this.flags.isEject && this.flags.isVirus || (s && "parent" === s.clientType ? g.playerInfo.customSkin1 && (this.skin = g.playerInfo.customSkin1) : s && "child" === s.clientType && (this.skin = g.playerInfo.customSkin2),
+            this.skin && g.settings.showSkins && this.drawSkin(t),
+            this.isMarkedForRemoval ? t.globalAlpha = this.alphaOnRemoval : t.globalAlpha = this.globalAlpha,
+            this.drawText(t))
+        }
         drawVirus(t) {
             t.beginPath(),
             t.fillStyle = "#970D4E",
