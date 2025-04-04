@@ -1104,6 +1104,7 @@
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
                 t.fill()
                 t.beginPath();
+                console.log(this.size)
                 t.arc(this.x, this.y, fillSize, 0, 2 * Math.PI, false); // Full size for the stroke
                 t.stroke();
             } else
