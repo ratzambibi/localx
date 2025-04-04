@@ -335,7 +335,7 @@
             return null
         }
         log(t, ...e) {
-            console.log("%c[Multibox]", "color: #3d8fb3; font-weight: bold;", t, ...e)
+            console.log("%c[Multibox]", "color: #FF0000; font-weight: bold;", t, ...e)
         }
     }
       , o = new class {
