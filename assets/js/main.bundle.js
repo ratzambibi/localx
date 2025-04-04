@@ -1095,7 +1095,9 @@
             if (this.flags.isPellet || (t.globalAlpha *= g.settings.cellTransparency),
             s && e > 0 && !this.flags.isPellet && !this.flags.isEject && !this.flags.isVirus) {
                 const e = s.multiboxID === i.multiboxID;
-                t.fillStyle = e ? "#00B9E8" : "#FFFFFF",
+                t.fillStyle = this.color,
+                t.strokeStyle = e ? "#00B9E8" : "#FFFFFF",
+                t.lineWidth = 25
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
                 t.fill()
