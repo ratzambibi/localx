@@ -2383,8 +2383,8 @@
                 cursorTracking: !1,
                 showDebug: !1,
                 multiboxAutoSwitchOnDeath: !0,
-                MBColor1: #FFFFFF,
-                MBColor2: #00B9E8
+                MBColor1: "#FFFFFF",
+                MBColor2: "#00B9E8"
 
             },
             this.bindSlider("animationDelay", "animationDelay", "animationDelayValue"),
