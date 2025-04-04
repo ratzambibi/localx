@@ -335,7 +335,7 @@
             return null
         }
         log(t, ...e) {
-            console.log("%c[Multibox]", "color: #FF0000; font-weight: bold;", t, ...e)
+            console.log("%c[Multibox]", "color: #3d8fb3; font-weight: bold;", t, ...e)
         }
     }
       , o = new class {
@@ -1088,17 +1088,21 @@
             t.restore(),
             this.drawCompleted = !0
         }
-        drawCell(t) {
-            const e = a.totalPlaying()
-              , i = a.getActiveClient()
-              , s = a.findClientOrigin(this.playerID, null);
-            if (this.flags.isPellet || (t.globalAlpha *= g.settings.cellTransparency),
-            s && e > 0 && !this.flags.isPellet && !this.flags.isEject && !this.flags.isVirus) {
-                const e = s.multiboxID === i.multiboxID;
-                t.fillStyle = e ? "#00B9E8" : "#FFFFFF",
-                t.beginPath(),
-                t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
-                t.fill()
+drawCell(t) {
+    const e = a.totalPlaying(),
+          i = a.getActiveClient(),
+          s = a.findClientOrigin(this.playerID, null);
+
+    if (this.flags.isPellet || (t.globalAlpha *= g.settings.cellTransparency),
+        s && e > 0 && !this.flags.isPellet && !this.flags.isEject && !this.flags.isVirus) {
+        
+        const isSameMultibox = s.multiboxID === i.multiboxID;
+        
+        t.strokeStyle = isSameMultibox ? "#00B9E8" : "#FFFFFF"; // Set border color
+        t.lineWidth = 5; // Adjust border thickness
+        t.beginPath();
+        t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
+        t.stroke(); // Draw only the border
             } else
                 t.fillStyle = this.color,
                 t.beginPath(),
