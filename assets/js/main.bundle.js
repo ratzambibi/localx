@@ -1029,6 +1029,7 @@
             this.targetY = null,
             this.targetSize = null,
             this.killedBy = null,
+            this.indicator = null,
             this.isMe = !1,
             this.drawCompleted = !1,
             this.isMarkedForRemoval = !1,
@@ -1137,6 +1138,7 @@
             this.skin && g.settings.showSkins && this.drawSkin(t),
             this.isMarkedForRemoval ? t.globalAlpha = this.alphaOnRemoval : t.globalAlpha = this.globalAlpha,
             this.drawText(t))
+            this.indicator && 
         }
         drawVirus(t) {
             t.beginPath(),
