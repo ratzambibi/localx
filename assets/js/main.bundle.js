@@ -1096,7 +1096,7 @@
             s && e > 0 && !this.flags.isPellet && !this.flags.isEject && !this.flags.isVirus) {
                 const e = s.multiboxID === i.multiboxID;
                 t.fillStyle = this.color,
-                t.strokeStyle = e ? "#FFFFFF" : "#00B9E8",
+                t.strokeStyle = e ? g.settings.MBColor1 : g.settings.MBColor2;
                 t.lineWidth = 25
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
