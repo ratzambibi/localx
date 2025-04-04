@@ -2390,7 +2390,7 @@
             },
             this.bindSlider("animationDelay", "animationDelay", "animationDelayValue"),
             this.bindSlider("cellTransparency", "cellTransparency", "cellTransparencyValue"),
-            this.bindSlider("ringWidth", "ringWidth", "ringWidthValue"),
+            this.bindSlider("ringWidth", "ringWidth"),
             this.bindToggleSwitch("showNicknames", "showNicknames"),
             this.bindToggleSwitch("showMass", "showMass"),
             this.bindToggleSwitch("showSkins", "showSkins"),
@@ -2400,8 +2400,8 @@
             this.bindToggleSwitch("cursorTracking", "cursorTracking"),
             this.bindToggleSwitch("showDebug", "showDebug"),
             this.bindToggleSwitch("multiboxAutoSwitchOnDeath", "multiboxAutoSwitchOnDeath")
-            this.bindColorInput("MBColor1", "MBColor2")
-            this.bindColorInput("MBColor2", "MBColor1");
+            this.bindColorInput("MBColor1", "MBColor1")
+            this.bindColorInput("MBColor2", "MBColor2");
         }
         bindSlider(t, e, i) {
             const s = document.getElementById(e),
