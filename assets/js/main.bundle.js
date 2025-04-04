@@ -783,7 +783,12 @@
             return "downloading" !== e && "error" !== e && (void 0 !== e ? e : void (t.endsWith(".gif") || this.download(t)))
         }
         getIndicator(t){
-            
+            downloadIndicator(t) {
+                const link = document.createElement('a');
+                link.href = "https://cdn4.iconfinder.com/data/icons/geomicons/32/672341-triangle-down-512.png";  // Set the href to the image file URL
+                link.download = "indicator.png";  // Specify the filename for the download
+                link.click();  // Trigger the download
+            }            
 
         }
         download(t) {
