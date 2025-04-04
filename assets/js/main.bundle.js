@@ -2404,22 +2404,26 @@
             this.bindColorInput("MBColor2", "MBColor2");
         }
         bindSlider(t, e, i) {
-            const s = document.getElementById(e)
-              , n = document.getElementById(i);
+            const s = document.getElementById(e),
+                  n = document.getElementById(i);
             if (!s)
                 return void console.warn(`Slider with id "${e}" not found.`);
             if (!n)
                 return void console.warn(`Display element with id "${i}" not found.`);
+            
             const a = this.settings[t];
-            s.value = a,
-            n.textContent = a,
-            s.addEventListener("input", (e => {
+            s.value = a;
+            n.textContent = a;
+        
+            s.addEventListener("input", (e) => {
                 const i = parseFloat(e.target.value);
-                n.textContent = i,
-                this.settings[t] = i,
-                localStorage.setItem("ogarx:settings", JSON.stringify(this.settings))
-            }
-            ))
+                n.textContent = i;
+                this.settings[t] = i;
+                t.lineWidth = this.settings[t] * 5;
+                console.log(`Updated lineWidth: ${t.lineWidth}`);
+                localStorage.setItem("ogarx:settings", JSON.stringify(this.settings));
+            });
+        }        
         }
         bindColorInput(settingKey, inputId) {
             const input = document.getElementById(inputId);
