@@ -1136,6 +1136,7 @@
             this.flags.isPellet && this.flags.isEject && this.flags.isVirus || (s && "parent" === s.clientType ? g.playerInfo.customSkin1 && (this.skin = g.playerInfo.customSkin1) : s && "child" === s.clientType && (this.skin = g.playerInfo.customSkin2),
             this.skin && g.settings.showSkins && this.drawSkin(t),
             this.isMarkedForRemoval ? t.globalAlpha = this.alphaOnRemoval : t.globalAlpha = this.globalAlpha,
+            this.drawIndicator,
             this.drawText(t))
         }
         drawVirus(t) {
