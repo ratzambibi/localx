@@ -2316,6 +2316,12 @@
             }
         }
         initMouseControls() {
+            const leftClickAction = localStorage.getItem("leftClickAction");
+            const middleClickAction = localStorage.getItem("middleClickAction");
+            const rightClickAction = localStorage.getItem("rightClickAction");
+            t.value = leftClickAction;
+            e.value = middleClickAction;
+            i.value = rightClickAction;
             const t = document.getElementById("leftClick")
               , e = document.getElementById("middleClick")
               , i = document.getElementById("rightClick");
@@ -2330,6 +2336,9 @@
             i.addEventListener("change", ( () => {
                 this.setMouseAction("rightClick", i.value)
             }
+            
+            
+
             )),
             this.setupMouseListeners()
         }
