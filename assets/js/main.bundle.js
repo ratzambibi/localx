@@ -2398,6 +2398,7 @@
             this.bindToggleSwitch("cursorTracking", "cursorTracking"),
             this.bindToggleSwitch("showDebug", "showDebug"),
             this.bindToggleSwitch("multiboxAutoSwitchOnDeath", "multiboxAutoSwitchOnDeath")
+            this.bindColorInput("MBColor1", "MBColor2")
         }
         bindSlider(t, e, i) {
             const s = document.getElementById(e)
