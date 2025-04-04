@@ -1097,12 +1097,12 @@
                 const e = s.multiboxID === i.multiboxID;
                 t.fillStyle = this.color,
                 t.strokeStyle = e ? g.settings.MBColor1 : g.settings.MBColor2;
-                t.lineWidth = g.settings.ringWidth;
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
                 t.fill()
                 t.beginPath(),
-                t.arc(this.x, this.y, this.size * t.lineWidth, 0, 2 * Math.PI, !1)
+                t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1)
+                t.lineWidth = g.settings.ringWidth
                 t.stroke()
             } else
                 t.fillStyle = this.color,
