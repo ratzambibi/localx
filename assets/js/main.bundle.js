@@ -2293,7 +2293,7 @@
                     return;
                 i.sendSplit(4);
                 break;
-            case "DualSplit16":
+            case "magicSplitKey":
                 if (!i)
                     return;
                 s > 1 && a.clients.forEach((t => t.sendSplit(4)));
