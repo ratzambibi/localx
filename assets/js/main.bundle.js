@@ -2418,24 +2418,25 @@
             }
             ))
         }
-bindColorInput(settingKey, inputId) {
-    const input = document.getElementById(inputId);
-    if (!input) {
-        console.warn(`Color input with id "${inputId}" not found.`);
-        return;
-    }
 
-    // Load saved color if available
-    if (this.settings[settingKey]) {
-        input.value = this.settings[settingKey];
-    }
+        bindColorInput(settingKey, inputId) {
+            const input = document.getElementById(inputId);
+            if (!input) {
+                console.warn(`Color input with id "${inputId}" not found.`);
+                return;
+            }
 
-    // Save color changes when input updates
-    input.addEventListener("input", (event) => {
-        this.settings[settingKey] = event.target.value;
-        localStorage.setItem("ogarx:settings", JSON.stringify(this.settings));
-    });
-}
+            // Load saved color if available
+            if (this.settings[settingKey]) {
+                input.value = this.settings[settingKey];
+            }
+
+            // Save color changes when input updates
+            input.addEventListener("input", (event) => {
+                this.settings[settingKey] = event.target.value;
+                localStorage.setItem("ogarx:settings", JSON.stringify(this.settings));
+            });
+        }
 
         bindToggleSwitch(t, e) {
             const i = document.getElementById(e);
