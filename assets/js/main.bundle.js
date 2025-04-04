@@ -1096,10 +1096,10 @@
             s && e > 0 && !this.flags.isPellet && !this.flags.isEject && !this.flags.isVirus) {
                 const e = s.multiboxID === i.multiboxID;
                 const ringWidth = g.settings.ringWidth;
-                const fillSize = this.size - (lineWidth / 2);
                 t.fillStyle = this.color,
                 t.strokeStyle = e ? g.settings.MBColor1 : g.settings.MBColor2;
                 t.lineWidth = g.settings.ringWidth * 30;
+                const fillSize = this.size - (t.lineWidth / 2);
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
                 t.fill()
