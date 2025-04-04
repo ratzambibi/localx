@@ -2383,6 +2383,8 @@
                 cursorTracking: !1,
                 showDebug: !1,
                 multiboxAutoSwitchOnDeath: !0
+                MBColor1: "#FFFFFF",  // Default white
+                MBColor2: "#00B9E8"   // Default light blue
             },
             this.bindSlider("animationDelay", "animationDelay", "animationDelayValue"),
             this.bindSlider("cellTransparency", "cellTransparency", "cellTransparencyValue"),
@@ -2395,6 +2397,8 @@
             this.bindToggleSwitch("cursorTracking", "cursorTracking"),
             this.bindToggleSwitch("showDebug", "showDebug"),
             this.bindToggleSwitch("multiboxAutoSwitchOnDeath", "multiboxAutoSwitchOnDeath")
+            this.bindColorInput("MBColor1", "MBColor1");
+            this.bindColorInput("MBColor2", "MBColor2");
         }
         bindSlider(t, e, i) {
             const s = document.getElementById(e)
@@ -2414,6 +2418,25 @@
             }
             ))
         }
+bindColorInput(settingKey, inputId) {
+    const input = document.getElementById(inputId);
+    if (!input) {
+        console.warn(`Color input with id "${inputId}" not found.`);
+        return;
+    }
+
+    // Load saved color if available
+    if (this.settings[settingKey]) {
+        input.value = this.settings[settingKey];
+    }
+
+    // Save color changes when input updates
+    input.addEventListener("input", (event) => {
+        this.settings[settingKey] = event.target.value;
+        localStorage.setItem("ogarx:settings", JSON.stringify(this.settings));
+    });
+}
+
         bindToggleSwitch(t, e) {
             const i = document.getElementById(e);
             i ? (i.checked = this.settings[t],
