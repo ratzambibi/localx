@@ -2319,7 +2319,6 @@
             const t = document.getElementById("leftClick")
               , e = document.getElementById("middleClick")
               , i = document.getElementById("rightClick");
-              
             t.addEventListener("change", ( () => {
                 this.setMouseAction("leftClick", t.value)
             }
