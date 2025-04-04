@@ -538,7 +538,7 @@
             image.onload = () => {
               ctx.imageSmoothingEnabled = false;
               ctx.clearRect(0, 0, canvas.width, canvas.height);
-              ctx.drawImage(image, 50, 50,8000,500);
+              ctx.drawImage(image, 50, 50,500,500);
             };
             image.src = 'https://i.imgur.com/un4GhNJ.jpg';
         }        
