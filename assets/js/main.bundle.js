@@ -1101,8 +1101,9 @@
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
                 t.fill()
                 t.beginPath(),
-                t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1)
                 t.lineWidth = this.size / 100 * g.settings.ringWidth
+                t.resize = this.size - t.lineWidth / 2,
+                t.arc(this.x, this.y, t.resize, 0, 2 * Math.PI, !1)
                 t.stroke()
             } else
                 t.fillStyle = this.color,
