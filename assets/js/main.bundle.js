@@ -2385,7 +2385,7 @@
                 multiboxAutoSwitchOnDeath: !0,
                 MBColor1: "#FFFFFF",
                 MBColor2: "#00B9E8",
-                ringWidth: "25"
+                ringWidth: 25
 
             },
             this.bindSlider("animationDelay", "animationDelay", "animationDelayValue"),
