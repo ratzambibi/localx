@@ -2382,9 +2382,9 @@
                 showPellets: !0,
                 cursorTracking: !1,
                 showDebug: !1,
-                multiboxAutoSwitchOnDeath: !0
-                bindColorInput("MBColor1", "MBColor1");
-                bindColorInput("MBColor2", "MBColor2");
+                multiboxAutoSwitchOnDeath: !0,
+                MBColor1: #FFFFFF,
+                MBColor2: #00B9E8
 
             },
             this.bindSlider("animationDelay", "animationDelay", "animationDelayValue"),
