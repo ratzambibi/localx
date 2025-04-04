@@ -1099,12 +1099,11 @@
                 t.fillStyle = this.color,
                 t.strokeStyle = e ? g.settings.MBColor1 : g.settings.MBColor2;
                 t.lineWidth = g.settings.ringWidth * 30;
-                const fillSize = this.size - (t.lineWidth / 2);
+                const fillSize = Math.max(this.size - (t.lineWidth / 2), 1);
                 t.beginPath(),
                 t.arc(this.x, this.y, this.size, 0, 2 * Math.PI, !1),
                 t.fill()
                 t.beginPath();
-                console.log(this.size)
                 t.arc(this.x, this.y, fillSize, 0, 2 * Math.PI, false); // Full size for the stroke
                 t.stroke();
             } else
